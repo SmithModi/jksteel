@@ -136,8 +136,8 @@ const Contact = () => {
                     <div>
                       <h4 className="font-semibold mb-1">Email Us</h4>
                       
-                      <a href="mailto:info@luxekitchen.com" className="text-white hover:underline">
-                        info@luxekitchen.com
+                      <a href="mailto:jaykhodiyarkrupa@gmail.com" className="text-white hover:underline">
+                        jaykhodiyarkrupa@gmail.com
                       </a>
                     </div>
                   </div>
@@ -149,8 +149,8 @@ const Contact = () => {
                     <div>
                       <h4 className="font-semibold mb-1">Call Us</h4>
                       
-                      <a href="tel:+15551234567" className="text-white hover:underline">
-                        +1 (555) 123-4567
+                      <a href="tel:+916353786749" className="text-white hover:underline">
+                        +91 6353786749
                       </a>
                     </div>
                   </div>
@@ -163,9 +163,10 @@ const Contact = () => {
                       <h4 className="font-semibold mb-1">Visit Us</h4>
                       
                       <address className="text-white not-italic">
-                        123 Kitchen Avenue<br />
-                        Culinary District, CD 12345<br />
-                        United States
+                        Jay Khodiyar Krupa<br />
+                        Plot no 2, Jay sardar industrial area,<br />
+                        near kothariya railway station<br />
+                        Rajkot - 360002
                       </address>
                     </div>
                   </div>
@@ -201,54 +202,11 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* FAQ Link */}
-              <div className="glass-card p-8 rounded-2xl text-center">
-                <h3 className="text-xl font-playfair font-semibold mb-4 text-white">
-                  Looking for Quick Answers?
-                </h3>
-                <p className="mb-6 text-slate-200">
-                  Check out our frequently asked questions for immediate help with common inquiries.
-                </p>
-                <Button variant="outline" className="glass-button">
-                  View FAQ
-                </Button>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Map Section (Placeholder) */}
-      <section className="py-20 glass-card">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-playfair font-bold mb-4">
-              Find Our <span className="text-gradient-primary">Showroom</span>
-            </h2>
-            <p className="text-xl max-w-2xl mx-auto text-slate-200">
-              Visit our flagship showroom to experience our products firsthand and get expert advice from our team.
-            </p>
-          </div>
-          
-          <div className="glass-card rounded-2xl p-8 text-center">
-            <div className="w-24 h-24 glass-card rounded-full flex items-center justify-center mx-auto mb-6 bg-gray-100">
-              <MapPin className="w-12 h-12 text-primary" />
-            </div>
-            <h3 className="text-2xl font-playfair font-semibold mb-4">Luxe Kitchen Showroom</h3>
-            <p className="text-muted-foreground mb-6">
-              123 Kitchen Avenue, Culinary District, CD 12345
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="glass-button">
-                Get Directions
-              </Button>
-              <Button variant="outline" className="glass-button">
-                Schedule Visit
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>;
 };
 export default Contact;
