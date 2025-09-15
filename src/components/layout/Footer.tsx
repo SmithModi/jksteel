@@ -10,9 +10,7 @@ const Footer = () => {
               <div className="w-8 h-8 glass-card rounded-lg flex items-center justify-center">
                 <ShoppingBag className="w-5 h-5 text-primary" />
               </div>
-              <span className="text-lg sm:text-xl font-playfair font-bold product-title">
-                Luxe Kitchen
-              </span>
+              <span className="text-lg sm:text-xl font-playfair font-bold product-title">JK Steel</span>
             </Link>
             <p className="text-slate-300 text-sm leading-relaxed max-w-sm">
                Elevate your culinary experience with our premium collection of kitchenware. 
@@ -109,17 +107,19 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-primary flex-shrink-0" />
-                <span className="text-slate-300 text-sm break-all">info@luxekitchen.com</span>
+                <span className="text-slate-300 text-sm break-all">jaykhodiyarkrupa@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-primary flex-shrink-0" />
-                <span className="text-slate-300 text-sm">+1 (555) 123-4567</span>
+                <span className="text-slate-300 text-sm">+91 6353786749</span>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                 <span className="text-slate-300 text-sm">
-                  123 Kitchen Avenue<br />
-                  Culinary District, CD 12345
+                  Jay Khodiyar Krupa, Plot no 2<br />
+                  Jay sardar industrial area<br />
+                  Near kothariya railway station<br />
+                  Rajkot - 360002
                 </span>
               </div>
             </div>
