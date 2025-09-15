@@ -38,8 +38,8 @@ const ProductCard = ({
         <LightningImage
           src={image}
           alt={title}
-          className="w-full h-36 sm:h-48 object-contain transition-all duration-300 ease-out group-hover:scale-105"
-          skeletonClassName="w-full h-36 sm:h-48 rounded-lg"
+          className="w-full h-48 sm:h-64 object-contain transition-all duration-300 ease-out group-hover:scale-105"
+          skeletonClassName="w-full h-48 sm:h-64 rounded-lg"
           priority="high"
           loadingAnimation="shimmer"
           lazyLoad={false}
