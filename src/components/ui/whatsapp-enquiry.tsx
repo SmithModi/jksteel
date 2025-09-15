@@ -55,6 +55,7 @@ Please share more details about pricing and availability. Thank you!`;
         <Button 
           size={size} 
           className={`${getButtonVariant()} bg-green-600 hover:bg-green-700 text-white border-green-600 hover:border-green-700 ${className}`}
+          onClick={(e) => e.stopPropagation()}
         >
           <MessageCircle className="w-4 h-4 mr-2" />
           WhatsApp Enquiry
