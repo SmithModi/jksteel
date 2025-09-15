@@ -35,7 +35,7 @@ Phone: ${customerNumber}
 
 Please share more details about pricing and availability. Thank you!`;
 
-    const whatsappUrl = `https://wa.me/919510174496?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/916353786749?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
     
     // Reset form and close dialog
