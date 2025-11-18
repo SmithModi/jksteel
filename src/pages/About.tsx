@@ -13,7 +13,7 @@ const About = () => {
             <p className="text-xl liquid-text-glow leading-relaxed">
               For over 15 years, Luxe Kitchen has been dedicated to creating premium kitchenware that combines 
               exceptional functionality with elegant design. We believe that the right tools can transform 
-              cooking from a chore into a passionate culinary journey.
+              cooking from a chore into a passionate culinary journey!
             </p>
           </div>
         </div>
