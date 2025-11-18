@@ -29,7 +29,7 @@ const About = () => {
               </div>
               <h2 className="text-3xl font-playfair font-bold mb-4 text-slate-200">Our Mission</h2>
               <p className="text-slate-200 leading-relaxed mb-6">
-                To empower chefs and culinary professionals with innovative, beautifully designed kitchenware 
+                To empower home chefs and culinary professionals with innovative, beautifully designed kitchenware 
                 that enhances their cooking experience and inspires creativity in the kitchen.
               </p>
               <ul className="space-y-2">
