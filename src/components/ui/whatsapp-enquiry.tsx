@@ -13,9 +13,9 @@ interface WhatsAppEnquiryProps {
   iconOnly?: boolean;
 }
 
-export const WhatsAppEnquiry = ({ 
-  productName, 
-  className = "", 
+export const WhatsAppEnquiry = ({
+  productName,
+  className = "",
   size = "default",
   variant = "default",
   iconOnly = false
@@ -33,7 +33,7 @@ export const WhatsAppEnquiry = ({
 
     const whatsappUrl = `https://wa.me/919510174496?text=${message}`;
     window.open(whatsappUrl, '_blank');
-    
+
     // Reset form and close dialog
     setCustomerName("");
     setCustomerNumber("");
@@ -48,8 +48,8 @@ export const WhatsAppEnquiry = ({
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button 
-          size={size} 
+        <Button
+          size={size}
           className={`${getButtonVariant()} bg-green-600 hover:bg-green-700 text-white border-green-600 hover:border-green-700 ${className}`}
           onClick={(e) => e.stopPropagation()}
         >
@@ -57,7 +57,7 @@ export const WhatsAppEnquiry = ({
           {iconOnly ? <span className="sr-only">WhatsApp Enquiry</span> : "WhatsApp Enquiry"}
         </Button>
       </DialogTrigger>
-      
+
       <DialogContent className="glass-card border-white/20" onClick={(e) => e.stopPropagation()}>
         <DialogHeader>
           <DialogTitle className="text-foreground">
@@ -67,7 +67,7 @@ export const WhatsAppEnquiry = ({
             Fill in your details below and we'll send a WhatsApp message with your enquiry.
           </DialogDescription>
         </DialogHeader>
-        
+
         <div className="space-y-4 py-4" onClick={(e) => e.stopPropagation()}>
           <div className="space-y-2">
             <Label htmlFor="customer-name" className="text-foreground">
@@ -82,7 +82,7 @@ export const WhatsAppEnquiry = ({
               className="glass-card border-white/20"
             />
           </div>
-          
+
           <div className="space-y-2">
             <Label htmlFor="customer-number" className="text-foreground">
               Phone Number *
@@ -96,10 +96,10 @@ export const WhatsAppEnquiry = ({
               className="glass-card border-white/20"
             />
           </div>
-          
+
           <div className="flex justify-end space-x-2 pt-4">
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               onClick={(e) => {
                 e.stopPropagation();
                 setIsOpen(false);
@@ -109,7 +109,7 @@ export const WhatsAppEnquiry = ({
               <X className="w-4 h-4 mr-2" />
               Cancel
             </Button>
-            <Button 
+            <Button
               onClick={(e) => {
                 e.stopPropagation();
                 handleSendEnquiry();

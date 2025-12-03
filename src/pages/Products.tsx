@@ -29,7 +29,7 @@ const Products = () => {
   useEffect(() => {
     const allImageSrcs = products.map(product => product.image);
     preloadImages(allImageSrcs.slice(0, 12)); // Preload first 12 images immediately
-    
+
     // Preload remaining images with a small delay
     setTimeout(() => {
       preloadImages(allImageSrcs.slice(12));
@@ -43,7 +43,7 @@ const Products = () => {
   const filteredAndSortedProducts = useMemo(() => {
     let filtered = products.filter((product) => {
       const matchesSearch = product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           product.description.toLowerCase().includes(searchTerm.toLowerCase());
+        product.description.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesCategory = selectedCategory === "All Products" || product.category === selectedCategory;
       return matchesSearch && matchesCategory;
     });
@@ -89,7 +89,7 @@ const Products = () => {
       {/* Unified Background for Entire Page */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-purple-900/30 to-blue-900/40" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-400/15 via-transparent to-transparent" />
-      
+
       {/* Hero Header */}
       <section className="pt-28 md:pt-32 pb-8 md:pb-12 relative z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -106,7 +106,7 @@ const Products = () => {
 
       {/* Filters Section - Seamlessly Integrated */}
       <section className="py-8 md:py-10 relative z-10">
-        
+
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col gap-8">
             {/* Search Bar - Full Width */}
@@ -127,11 +127,10 @@ const Products = () => {
                   key={category}
                   variant={selectedCategory === category ? "default" : "outline"}
                   size="lg"
-                  className={`liquid-glass-button px-6 py-3 transition-all duration-300 ${
-                    selectedCategory === category 
-                      ? "bg-gradient-to-r from-blue-500/80 to-purple-500/80 text-white border-white/20 shadow-lg hover:from-blue-400/80 hover:to-purple-400/80" 
+                  className={`liquid-glass-button px-6 py-3 transition-all duration-300 ${selectedCategory === category
+                      ? "bg-gradient-to-r from-blue-500/80 to-purple-500/80 text-white border-white/20 shadow-lg hover:from-blue-400/80 hover:to-purple-400/80"
                       : "bg-white/10 text-white/90 border-white/30 hover:bg-white/20 hover:border-blue-400/50"
-                  }`}
+                    }`}
                   onClick={() => setSelectedCategory(category)}
                 >
                   {category}
@@ -144,7 +143,7 @@ const Products = () => {
               <div className="text-slate-300">
                 Showing {filteredAndSortedProducts.length} of {products.length} products
               </div>
-              
+
               <div className="flex items-center gap-4">
                 <select
                   value={sortBy}
@@ -162,11 +161,10 @@ const Products = () => {
                     variant={viewMode === "grid" ? "default" : "ghost"}
                     size="sm"
                     onClick={() => setViewMode("grid")}
-                    className={`liquid-glass-button p-3 ${
-                      viewMode === "grid" 
-                        ? "bg-gradient-to-r from-blue-500/80 to-purple-500/80 text-white" 
+                    className={`liquid-glass-button p-3 ${viewMode === "grid"
+                        ? "bg-gradient-to-r from-blue-500/80 to-purple-500/80 text-white"
                         : "text-white/70 hover:text-white hover:bg-white/20"
-                    }`}
+                      }`}
                   >
                     <Grid className="w-5 h-5" />
                   </Button>
@@ -174,11 +172,10 @@ const Products = () => {
                     variant={viewMode === "list" ? "default" : "ghost"}
                     size="sm"
                     onClick={() => setViewMode("list")}
-                    className={`liquid-glass-button p-3 ${
-                      viewMode === "list" 
-                        ? "bg-gradient-to-r from-blue-500/80 to-purple-500/80 text-white" 
+                    className={`liquid-glass-button p-3 ${viewMode === "list"
+                        ? "bg-gradient-to-r from-blue-500/80 to-purple-500/80 text-white"
                         : "text-white/70 hover:text-white hover:bg-white/20"
-                    }`}
+                      }`}
                   >
                     <List className="w-5 h-5" />
                   </Button>
@@ -191,7 +188,7 @@ const Products = () => {
 
       {/* Products Grid Section - Seamlessly Integrated */}
       <section className="py-12 relative z-10">
-        
+
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {filteredAndSortedProducts.length === 0 ? (
             <div className="text-center py-16">
@@ -224,11 +221,10 @@ const Products = () => {
                 </p>
               </div>
 
-              <div className={`grid gap-4 sm:gap-6 lg:gap-8 ${
-                viewMode === "grid" 
-                  ? "grid-cols-2 md:grid-cols-3 xl:grid-cols-4" 
+              <div className={`grid gap-4 sm:gap-6 lg:gap-8 auto-rows-fr ${viewMode === "grid"
+                  ? "grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
                   : "grid-cols-1"
-              }`}>
+                }`}>
                 {currentProducts.map((product) => (
                   <ProductCard
                     key={product.id}

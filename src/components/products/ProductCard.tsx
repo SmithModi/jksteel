@@ -3,6 +3,7 @@ import { Eye, Heart, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import LightningImage from "@/components/ui/lightning-image";
 import { WhatsAppEnquiry } from "@/components/ui/whatsapp-enquiry";
+
 interface ProductCardProps {
   id: string;
   title: string;
@@ -11,6 +12,7 @@ interface ProductCardProps {
   isNew?: boolean;
   onViewDetails: (id: string) => void;
 }
+
 const ProductCard = ({
   id,
   title,
@@ -20,9 +22,10 @@ const ProductCard = ({
   onViewDetails
 }: ProductCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div
-      className="group liquid-glass-card rounded-2xl sm:rounded-3xl p-3 sm:p-6 cursor-pointer transition-all duration-150 ease-out hover:border-white/30"
+      className="group liquid-glass-card rounded-2xl sm:rounded-3xl p-3 sm:p-6 cursor-pointer transition-all duration-150 ease-out hover:border-white/30 flex flex-col h-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => onViewDetails(id)}
@@ -50,9 +53,8 @@ const ProductCard = ({
 
         {/* Hover Actions */}
         <div
-          className={`absolute inset-0 bg-black/30 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-all duration-150 ease-out ${
-            isHovered ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 bg-black/30 backdrop-blur-sm rounded-2xl flex items-center justify-center transition-all duration-150 ease-out ${isHovered ? "opacity-100" : "opacity-0"
+            }`}
         >
           <Button
             size="sm"
@@ -68,18 +70,23 @@ const ProductCard = ({
         </div>
       </div>
 
-      {/* Product Info */}
-      <div className="space-y-2">
-        <div className="text-xs font-medium text-white/70 uppercase tracking-wide">
+      {/* Product Info - Flex container that grows to fill available space */}
+      <div className="flex flex-col flex-1 min-h-0">
+        {/* Category */}
+        <div className="text-xs font-medium text-white/70 uppercase tracking-wide mb-2">
           {category}
         </div>
 
-        <h3 className="font-playfair font-semibold text-base sm:text-xl leading-tight text-foreground line-clamp-2 no-text-glow">
+        {/* Title - Fixed height for 2 lines to ensure consistency */}
+        <h3 className="font-playfair font-semibold text-base sm:text-xl leading-tight text-foreground line-clamp-2 no-text-glow mb-2 min-h-[3rem] sm:min-h-[3.5rem]">
           {title}
         </h3>
 
-        {/* WhatsApp Enquiry */}
-        <div className="pt-2 flex justify-between items-center">
+        {/* Spacer that grows to push button to bottom */}
+        <div className="flex-1"></div>
+
+        {/* WhatsApp Enquiry - Always at bottom */}
+        <div className="flex justify-between items-center pt-2">
           <div className="flex-1 hidden sm:block">
             <WhatsAppEnquiry
               productName={title}
