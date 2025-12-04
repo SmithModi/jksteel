@@ -87,8 +87,8 @@ const Products = () => {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Unified Background for Entire Page */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-purple-900/30 to-blue-900/40" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-400/15 via-transparent to-transparent" />
+      <div className="fixed inset-0 bg-gradient-to-br from-slate-900/95 via-purple-900/30 to-blue-900/40 -z-10" />
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-400/15 via-transparent to-transparent -z-10" />
 
       {/* Hero Header */}
       <section className="pt-28 md:pt-32 pb-8 md:pb-12 relative z-10">
@@ -104,82 +104,70 @@ const Products = () => {
         </div>
       </section>
 
-      {/* Filters Section - Seamlessly Integrated */}
-      <section className="py-8 md:py-10 relative z-10">
-
+      {/* Filters Section - Elegantly Refined */}
+      <section className="py-8 md:py-12 relative z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col gap-8">
-            {/* Search Bar - Full Width */}
-            <div className="relative max-w-2xl mx-auto w-full">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/70 w-5 h-5" />
+          {/* Search Bar - Minimalistic & Luxurious */}
+          <div className="max-w-3xl mx-auto mb-10">
+            <div className="relative group">
+              <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5 transition-colors group-hover:text-purple-400" />
               <Input
-                placeholder="Search products..."
+                placeholder="Search for premium kitchenware..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 h-14 text-lg liquid-glass-card bg-white/10 border-white/20 text-white placeholder:text-slate-300 focus:border-blue-400/50 focus:bg-white/15 transition-all duration-300"
+                className="pl-14 pr-6 h-14 rounded-full bg-white/95 backdrop-blur-sm border border-slate-200 text-slate-800 placeholder:text-slate-400 shadow-lg hover:shadow-xl hover:border-purple-300 focus:border-purple-400 focus:ring-2 focus:ring-purple-400/20 transition-all duration-300 text-base font-medium"
               />
             </div>
+          </div>
 
-            {/* Category Filters - Centered */}
-            <div className="flex flex-wrap justify-center gap-3">
-              {categories.map((category) => (
-                <Button
-                  key={category}
-                  variant={selectedCategory === category ? "default" : "outline"}
-                  size="lg"
-                  className={`liquid-glass-button px-6 py-3 transition-all duration-300 ${selectedCategory === category
-                      ? "bg-gradient-to-r from-blue-500/80 to-purple-500/80 text-white border-white/20 shadow-lg hover:from-blue-400/80 hover:to-purple-400/80"
-                      : "bg-white/10 text-white/90 border-white/30 hover:bg-white/20 hover:border-blue-400/50"
-                    }`}
-                  onClick={() => setSelectedCategory(category)}
-                >
-                  {category}
-                </Button>
-              ))}
+          {/* Category Filters - Clean Pills */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${selectedCategory === category
+                  ? "bg-purple-600 text-white shadow-lg shadow-purple-600/30 hover:bg-purple-700"
+                  : "bg-white/80 backdrop-blur-sm text-slate-700 border border-slate-200 hover:border-purple-300 hover:bg-white hover:shadow-md"
+                  }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          {/* Controls Row - Refined Layout */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-4 border-t border-white/10">
+            {/* Product Count */}
+            <div className="text-slate-300 text-sm font-medium">
+              Showing <span className="text-purple-400 font-semibold">{filteredAndSortedProducts.length}</span> of <span className="text-purple-400 font-semibold">{products.length}</span> products
             </div>
 
-            {/* Sort & View Controls - Right Aligned */}
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-              <div className="text-slate-300">
-                Showing {filteredAndSortedProducts.length} of {products.length} products
-              </div>
+            {/* View Controls */}
+            <div className="flex items-center gap-3">
 
-              <div className="flex items-center gap-4">
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="liquid-glass-card px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:border-blue-400/50 focus:outline-none focus:bg-white/15 transition-all duration-300"
+              {/* View Toggle - Minimalistic */}
+              <div className="flex bg-white/90 backdrop-blur-sm rounded-full p-1 border border-slate-200 shadow-sm">
+                <button
+                  onClick={() => setViewMode("grid")}
+                  className={`p-2 rounded-full transition-all duration-300 ${viewMode === "grid"
+                    ? "bg-purple-600 text-white shadow-md"
+                    : "text-slate-500 hover:text-purple-600 hover:bg-purple-50"
+                    }`}
+                  aria-label="Grid view"
                 >
-                  <option value="name" className="bg-slate-800 text-white">Sort by Name</option>
-                  <option value="price-low" className="bg-slate-800 text-white">Price: Low to High</option>
-                  <option value="price-high" className="bg-slate-800 text-white">Price: High to Low</option>
-                  <option value="newest" className="bg-slate-800 text-white">Newest First</option>
-                </select>
-
-                <div className="flex bg-white/10 rounded-lg p-1 border border-white/20">
-                  <Button
-                    variant={viewMode === "grid" ? "default" : "ghost"}
-                    size="sm"
-                    onClick={() => setViewMode("grid")}
-                    className={`liquid-glass-button p-3 ${viewMode === "grid"
-                        ? "bg-gradient-to-r from-blue-500/80 to-purple-500/80 text-white"
-                        : "text-white/70 hover:text-white hover:bg-white/20"
-                      }`}
-                  >
-                    <Grid className="w-5 h-5" />
-                  </Button>
-                  <Button
-                    variant={viewMode === "list" ? "default" : "ghost"}
-                    size="sm"
-                    onClick={() => setViewMode("list")}
-                    className={`liquid-glass-button p-3 ${viewMode === "list"
-                        ? "bg-gradient-to-r from-blue-500/80 to-purple-500/80 text-white"
-                        : "text-white/70 hover:text-white hover:bg-white/20"
-                      }`}
-                  >
-                    <List className="w-5 h-5" />
-                  </Button>
-                </div>
+                  <Grid className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setViewMode("list")}
+                  className={`p-2 rounded-full transition-all duration-300 ${viewMode === "list"
+                    ? "bg-purple-600 text-white shadow-md"
+                    : "text-slate-500 hover:text-purple-600 hover:bg-purple-50"
+                    }`}
+                  aria-label="List view"
+                >
+                  <List className="w-4 h-4" />
+                </button>
               </div>
             </div>
           </div>
@@ -222,8 +210,8 @@ const Products = () => {
               </div>
 
               <div className={`grid gap-4 sm:gap-6 lg:gap-8 auto-rows-fr ${viewMode === "grid"
-                  ? "grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
-                  : "grid-cols-1"
+                ? "grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
+                : "grid-cols-1"
                 }`}>
                 {currentProducts.map((product) => (
                   <ProductCard
@@ -278,29 +266,6 @@ const Products = () => {
               )}
             </>
           )}
-        </div>
-      </section>
-
-      {/* Newsletter Section - Seamlessly Integrated */}
-      <section className="py-16 relative z-10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl font-playfair font-bold mb-4 text-white no-text-glow">
-              Stay Updated with New Arrivals
-            </h2>
-            <p className="text-slate-300 mb-8 leading-relaxed">
-              Be the first to know about our latest products, exclusive offers, and kitchen tips.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <Input
-                placeholder="Enter your email"
-                className="liquid-glass-card flex-1 bg-white/5 border-white/10 text-white placeholder:text-slate-400 focus:border-white/20"
-              />
-              <Button className="liquid-glass-button bg-gradient-to-r from-blue-500/80 to-purple-500/80 text-white border-white/20 hover:from-blue-400/80 hover:to-purple-400/80 px-8">
-                Subscribe
-              </Button>
-            </div>
-          </div>
         </div>
       </section>
     </div>

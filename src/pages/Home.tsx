@@ -1,16 +1,78 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { ArrowRight, Star, Users, Award, Sparkles, ChefHat, Utensils, Wine, Soup, Quote, Shield, Truck, Clock, Heart, Mail, Play, CheckCircle, Zap, Globe, Scissors, Crown, BookOpen, Camera } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import ProductCard from "@/components/products/ProductCard";
-import { products } from "@/data/products";
+import { TestimonialsColumn } from "@/components/ui/testimonials-columns";
 import heroImage from "@/assets/hero-kitchenware.jpg";
+
+const testimonials = [
+  {
+    text: "The knife set completely changed my cooking experience. The precision and balance are unmatched. It's like having professional-grade tools in my home kitchen.",
+    image: "https://randomuser.me/api/portraits/women/1.jpg",
+    name: "Sarah Johnson",
+    role: "Home Chef & Food Blogger",
+  },
+  {
+    text: "As a restaurant owner, I demand the best. JK Steel delivers consistency and durability that our busy kitchen requires. Outstanding investment.",
+    image: "https://randomuser.me/api/portraits/men/2.jpg",
+    name: "Michael Torres",
+    role: "Restaurant Owner",
+  },
+  {
+    text: "Every piece feels luxurious and performs flawlessly. The customer service was exceptional, and the packaging was museum-quality beautiful.",
+    image: "https://randomuser.me/api/portraits/women/3.jpg",
+    name: "Emma Williams",
+    role: "Culinary Student",
+  },
+  {
+    text: "JK Steel's storage containers keep my ingredients fresh for days. The airtight seals and premium materials make meal prep so much easier.",
+    image: "https://randomuser.me/api/portraits/men/4.jpg",
+    name: "David Chen",
+    role: "Meal Prep Enthusiast",
+  },
+  {
+    text: "The cookware heats evenly and the non-stick surface is incredible. Cleaning up after cooking has never been this easy. Highly recommend!",
+    image: "https://randomuser.me/api/portraits/women/5.jpg",
+    name: "Priya Sharma",
+    role: "Home Cook",
+  },
+  {
+    text: "I've been using JK Steel products for years in my catering business. They withstand heavy use and still look brand new. Worth every penny.",
+    image: "https://randomuser.me/api/portraits/women/6.jpg",
+    name: "Lisa Anderson",
+    role: "Catering Business Owner",
+  },
+  {
+    text: "The kitchen tools are ergonomically designed and make cooking a pleasure. My hands don't tire even after hours of prep work.",
+    image: "https://randomuser.me/api/portraits/men/7.jpg",
+    name: "James Wilson",
+    role: "Professional Chef",
+  },
+  {
+    text: "Beautiful design meets functionality. These products look stunning on my kitchen counter and perform even better than they look.",
+    image: "https://randomuser.me/api/portraits/women/8.jpg",
+    name: "Sophia Martinez",
+    role: "Food Stylist",
+  },
+  {
+    text: "The quality is unmatched. I've tried many brands, but JK Steel stands out for its durability and attention to detail. A game-changer!",
+    image: "https://randomuser.me/api/portraits/men/9.jpg",
+    name: "Robert Kumar",
+    role: "Cooking Instructor",
+  },
+];
+
+const firstColumn = testimonials.slice(0, 3);
+const secondColumn = testimonials.slice(3, 6);
+const thirdColumn = testimonials.slice(6, 9);
+
 const Home = () => {
-  const [featuredProducts] = useState(products.slice(0, 6));
-  const handleViewDetails = (id: string) => {
-    window.location.href = `/product/${id}`;
-  };
-  return <div className="min-h-screen">
+  return <div className="min-h-screen relative overflow-hidden">
+    {/* Unified Background */}
+    <div className="fixed inset-0 bg-gradient-to-br from-slate-900/95 via-purple-900/30 to-blue-900/40 -z-10" />
+    <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-400/15 via-transparent to-transparent -z-10" />
+
     {/* Hero Section */}
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Elegant Hero Background */}
@@ -137,38 +199,9 @@ const Home = () => {
       </div>
     </section>
 
-    {/* Featured Products */}
-    <section className="py-12 sm:py-16 lg:py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
-          <div className="glass-card rounded-full px-4 sm:px-6 py-2 mb-4 sm:mb-6 inline-block">
-            <span className="text-xs sm:text-sm font-medium text-slate-200">Featured Collection</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold mb-3 sm:mb-4 px-4">
-            Discover Our <span className="text-gradient-primary">Premium</span> Selection
-          </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-            Each product is carefully selected for its exceptional quality, innovative design, and superior functionality.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 auto-rows-fr">
-          {featuredProducts.map(product => <ProductCard key={product.id} {...product} onViewDetails={handleViewDetails} />)}
-        </div>
-
-        <div className="text-center mt-8 sm:mt-12 px-4">
-          <Button size="lg" variant="outline" className="glass-button w-full sm:w-auto" asChild>
-            <Link to="/products">
-              View All Products
-              <ArrowRight className="ml-2 w-4 sm:w-5 h-4 sm:h-5" />
-            </Link>
-          </Button>
-        </div>
-      </div>
-    </section>
 
     {/* Features Section */}
-    <section className="py-12 sm:py-16 lg:py-20 glass-card">
+    <section className="py-12 sm:py-16 lg:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold mb-3 sm:mb-4 px-4">
@@ -179,168 +212,127 @@ const Home = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          <div className="text-center glass-card p-6 sm:p-8 rounded-2xl">
-            <div className="w-12 sm:w-16 h-12 sm:h-16 glass-card rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-              <Award className="w-6 sm:w-8 h-6 sm:h-8 text-primary" />
-            </div>
-            <h3 className="text-lg sm:text-xl font-playfair font-semibold mb-3 sm:mb-4">Premium Quality</h3>
-            <p className="text-sm sm:text-base text-slate-50">
-              Every product undergoes rigorous quality testing to ensure it meets our high standards of excellence and durability.
-            </p>
-          </div>
-
-          <div className="text-center glass-card p-6 sm:p-8 rounded-2xl">
-            <div className="w-12 sm:w-16 h-12 sm:h-16 glass-card rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-              <Star className="w-6 sm:w-8 h-6 sm:h-8 text-primary" />
-            </div>
-            <h3 className="text-lg sm:text-xl font-playfair font-semibold mb-3 sm:mb-4">Expert Design</h3>
-            <p className="text-sm sm:text-base text-slate-50">
-              Our products are designed by culinary experts who understand the needs of both professional chefs and home cooks.
-            </p>
-          </div>
-
-          <div className="text-center glass-card p-6 sm:p-8 rounded-2xl">
-            <div className="w-12 sm:w-16 h-12 sm:h-16 glass-card rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-              <Users className="w-6 sm:w-8 h-6 sm:h-8 text-primary" />
-            </div>
-            <h3 className="text-lg sm:text-xl font-playfair font-semibold mb-3 sm:mb-4">Customer First</h3>
-            <p className="text-sm sm:text-base text-slate-50">
-              We prioritize customer satisfaction with exceptional service, easy returns, and comprehensive warranties.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {/* Chef Partnerships Section */}
-    <section className="py-12 sm:py-16 lg:py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
-          <div className="glass-card rounded-full px-4 sm:px-6 py-2 mb-4 sm:mb-6 inline-block">
-            <span className="text-xs sm:text-sm font-medium text-slate-200">Chef Partnerships</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold mb-3 sm:mb-4 px-4">
-            Trusted by <span className="text-gradient-primary">World-Class</span> Chefs
-          </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-            Our kitchenware is the choice of Michelin-starred restaurants and culinary institutes worldwide.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          <div className="glass-card p-6 sm:p-8 rounded-2xl text-center">
-            <div className="w-16 sm:w-20 h-16 sm:h-20 glass-card rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-              <Crown className="w-8 sm:w-10 h-8 sm:h-10 text-yellow-400" />
-            </div>
-            <h3 className="text-lg sm:text-xl font-playfair font-semibold mb-2 sm:mb-3">Chef Marcus Laurent</h3>
-            <p className="text-xs sm:text-sm text-purple-300 mb-3 sm:mb-4">Michelin 3-Star • Le Bernardin</p>
-            <p className="text-slate-200 text-sm">
-              "JK Steel's precision and craftsmanship have revolutionized how we approach fine dining preparation."
-            </p>
-          </div>
-
-          <div className="glass-card p-6 sm:p-8 rounded-2xl text-center">
-            <div className="w-16 sm:w-20 h-16 sm:h-20 glass-card rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-              <ChefHat className="w-8 sm:w-10 h-8 sm:h-10 text-blue-400" />
-            </div>
-            <h3 className="text-lg sm:text-xl font-playfair font-semibold mb-2 sm:mb-3">Isabella Rodriguez</h3>
-            <p className="text-xs sm:text-sm text-purple-300 mb-3 sm:mb-4">James Beard Winner • Culinary Institute</p>
-            <p className="text-slate-200 text-sm">
-              "The attention to detail in every piece reflects our commitment to culinary excellence."
-            </p>
-          </div>
-
-          <div className="glass-card p-6 sm:p-8 rounded-2xl text-center">
-            <div className="w-16 sm:w-20 h-16 sm:h-20 glass-card rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-              <Award className="w-8 sm:w-10 h-8 sm:h-10 text-orange-400" />
-            </div>
-            <h3 className="text-lg sm:text-xl font-playfair font-semibold mb-2 sm:mb-3">David Chen</h3>
-            <p className="text-xs sm:text-sm text-purple-300 mb-3 sm:mb-4">Top Chef Winner • Molecular Gastronomy</p>
-            <p className="text-slate-200 text-sm">
-              "Innovation meets tradition - these tools enable creativity at the highest level."
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {/* Detailed Process Section */}
-    <section className="py-12 sm:py-16 lg:py-20 glass-card">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold mb-3 sm:mb-4 px-4">
-            Our <span className="text-gradient-primary">Craftsmanship</span> Process
-          </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-slate-200 max-w-3xl mx-auto px-4">
-            From concept to kitchen, every piece is meticulously crafted through our time-honored process that combines traditional techniques with cutting-edge innovation.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-          <div className="space-y-6 sm:space-y-8">
-            <div className="flex items-start space-x-3 sm:space-x-4">
-              <div className="w-10 sm:w-12 h-10 sm:h-12 glass-card rounded-full flex items-center justify-center flex-shrink-0">
-                <BookOpen className="w-5 sm:w-6 h-5 sm:h-6 text-blue-400" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              icon: Award,
+              title: "Premium Quality",
+              desc: "Every product undergoes rigorous quality testing to ensure it meets our high standards of excellence and durability.",
+              color: "text-amber-400",
+              bg: "bg-amber-400/10",
+              border: "border-amber-400/20"
+            },
+            {
+              icon: Star,
+              title: "Expert Design",
+              desc: "Our products are designed by culinary experts who understand the needs of both professional chefs and home cooks.",
+              color: "text-blue-400",
+              bg: "bg-blue-400/10",
+              border: "border-blue-400/20"
+            },
+            {
+              icon: Users,
+              title: "Customer First",
+              desc: "We prioritize customer satisfaction with exceptional service, easy returns, and comprehensive warranties.",
+              color: "text-emerald-400",
+              bg: "bg-emerald-400/10",
+              border: "border-emerald-400/20"
+            }
+          ].map((feature, index) => (
+            <div key={index} className="group relative glass-card p-8 rounded-3xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/5">
+              <div className={`w-16 h-16 rounded-2xl ${feature.bg} ${feature.border} border flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}>
+                <feature.icon className={`w-8 h-8 ${feature.color}`} />
               </div>
-              <div>
-                <h3 className="text-lg sm:text-xl font-playfair font-semibold mb-2">Design & Research</h3>
-                <p className="text-slate-200 text-sm">
-                  Our design team collaborates with professional chefs to understand real kitchen needs, creating blueprints that merge form with unparalleled functionality.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start space-x-3 sm:space-x-4">
-              <div className="w-10 sm:w-12 h-10 sm:h-12 glass-card rounded-full flex items-center justify-center flex-shrink-0">
-                <Zap className="w-5 sm:w-6 h-5 sm:h-6 text-purple-400" />
-              </div>
-              <div>
-                <h3 className="text-lg sm:text-xl font-playfair font-semibold mb-2">Precision Manufacturing</h3>
-                <p className="text-slate-200 text-sm">
-                  Using state-of-the-art CNC machinery and aerospace-grade materials, each piece is crafted to tolerances measured in microns for perfect performance.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start space-x-3 sm:space-x-4">
-              <div className="w-10 sm:w-12 h-10 sm:h-12 glass-card rounded-full flex items-center justify-center flex-shrink-0">
-                <CheckCircle className="w-5 sm:w-6 h-5 sm:h-6 text-green-400" />
-              </div>
-              <div>
-                <h3 className="text-lg sm:text-xl font-playfair font-semibold mb-2">Quality Assurance</h3>
-                <p className="text-slate-200 text-sm">
-                  Every product undergoes 47 individual quality checks including stress testing, temperature resistance, and performance validation by master craftsmen.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start space-x-3 sm:space-x-4">
-              <div className="w-10 sm:w-12 h-10 sm:h-12 glass-card rounded-full flex items-center justify-center flex-shrink-0">
-                <Heart className="w-5 sm:w-6 h-5 sm:h-6 text-red-400" />
-              </div>
-              <div>
-                <h3 className="text-lg sm:text-xl font-playfair font-semibold mb-2">Hand-Finished Excellence</h3>
-                <p className="text-slate-200 text-sm">
-                  Master artisans apply final touches, ensuring each piece meets our exacting standards before earning the JK Steel mark of excellence.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="glass-card p-6 sm:p-8 rounded-2xl mt-8 lg:mt-0">
-            <div className="text-center mb-6">
-              <Camera className="w-10 sm:w-12 h-10 sm:h-12 text-purple-400 mx-auto mb-4" />
-              <h3 className="text-xl sm:text-2xl font-playfair font-semibold mb-2">Behind the Scenes</h3>
-              <p className="text-slate-200 text-sm mb-6">
-                Take a virtual tour of our artisan workshop where tradition meets innovation.
+              <h3 className="text-xl font-playfair font-bold mb-3 text-slate-100">{feature.title}</h3>
+              <p className="text-slate-300 leading-relaxed">
+                {feature.desc}
               </p>
             </div>
-            <div className="aspect-video glass-card rounded-xl flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-blue-500/20">
-              <div className="text-center">
-                <Play className="w-12 sm:w-16 h-12 sm:h-16 text-white mx-auto mb-4" />
-                <p className="text-white font-medium">Watch Our Craft Process</p>
-                <p className="text-slate-300 text-sm">3 minute documentary</p>
+          ))}
+        </div>
+      </div>
+    </section>
+
+
+
+    {/* Detailed Process Section */}
+    <section className="py-12 sm:py-16 lg:py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold mb-3 sm:mb-4 px-4">
+              Our <span className="text-gradient-primary">Craftsmanship</span> Process
+            </h2>
+            <p className="text-base sm:text-lg lg:text-xl text-slate-200 max-w-3xl mx-auto px-4">
+              From concept to kitchen, every piece is meticulously crafted through our time-honored process that combines traditional techniques with cutting-edge innovation.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+            <div className="space-y-6 sm:space-y-8">
+              <div className="flex items-start space-x-3 sm:space-x-4">
+                <div className="w-10 sm:w-12 h-10 sm:h-12 glass-card rounded-full flex items-center justify-center flex-shrink-0">
+                  <BookOpen className="w-5 sm:w-6 h-5 sm:h-6 text-blue-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-playfair font-semibold mb-2">Design & Research</h3>
+                  <p className="text-slate-200 text-sm">
+                    Our design team collaborates with professional chefs to understand real kitchen needs, creating blueprints that merge form with unparalleled functionality.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-3 sm:space-x-4">
+                <div className="w-10 sm:w-12 h-10 sm:h-12 glass-card rounded-full flex items-center justify-center flex-shrink-0">
+                  <Zap className="w-5 sm:w-6 h-5 sm:h-6 text-purple-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-playfair font-semibold mb-2">Precision Manufacturing</h3>
+                  <p className="text-slate-200 text-sm">
+                    Using state-of-the-art CNC machinery and aerospace-grade materials, each piece is crafted to tolerances measured in microns for perfect performance.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-3 sm:space-x-4">
+                <div className="w-10 sm:w-12 h-10 sm:h-12 glass-card rounded-full flex items-center justify-center flex-shrink-0">
+                  <CheckCircle className="w-5 sm:w-6 h-5 sm:h-6 text-green-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-playfair font-semibold mb-2">Quality Assurance</h3>
+                  <p className="text-slate-200 text-sm">
+                    Every product undergoes 47 individual quality checks including stress testing, temperature resistance, and performance validation by master craftsmen.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-3 sm:space-x-4">
+                <div className="w-10 sm:w-12 h-10 sm:h-12 glass-card rounded-full flex items-center justify-center flex-shrink-0">
+                  <Heart className="w-5 sm:w-6 h-5 sm:h-6 text-red-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-playfair font-semibold mb-2">Hand-Finished Excellence</h3>
+                  <p className="text-slate-200 text-sm">
+                    Master artisans apply final touches, ensuring each piece meets our exacting standards before earning the JK Steel mark of excellence.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="glass-card p-6 sm:p-8 rounded-2xl mt-8 lg:mt-0">
+              <div className="text-center mb-6">
+                <Camera className="w-10 sm:w-12 h-10 sm:h-12 text-purple-400 mx-auto mb-4" />
+                <h3 className="text-xl sm:text-2xl font-playfair font-semibold mb-2">Behind the Scenes</h3>
+                <p className="text-slate-200 text-sm mb-6">
+                  Take a virtual tour of our artisan workshop where tradition meets innovation.
+                </p>
+              </div>
+              <div className="aspect-video glass-card rounded-xl flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-blue-500/20">
+                <div className="text-center">
+                  <Play className="w-12 sm:w-16 h-12 sm:h-16 text-white mx-auto mb-4" />
+                  <p className="text-white font-medium">Watch Our Craft Process</p>
+                  <p className="text-slate-300 text-sm">3 minute documentary</p>
+                </div>
               </div>
             </div>
           </div>
@@ -349,190 +341,42 @@ const Home = () => {
     </section>
 
     {/* Customer Testimonials */}
-    <section className="py-12 sm:py-16 lg:py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
-          <div className="glass-card rounded-full px-4 sm:px-6 py-2 mb-4 sm:mb-6 inline-block">
-            <span className="text-xs sm:text-sm font-medium text-slate-200">Customer Stories</span>
+    <section className="py-12 sm:py-16 lg:py-20 relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center justify-center max-w-[540px] mx-auto"
+        >
+          <div className="flex justify-center">
+            <div className="glass-card rounded-full px-4 sm:px-6 py-2 mb-4 sm:mb-6 inline-block">
+              <span className="text-xs sm:text-sm font-medium text-slate-200">Customer Stories</span>
+            </div>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold mb-3 sm:mb-4 px-4">
-            What Our <span className="text-gradient-primary">Customers</span> Say
+
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold mb-3 sm:mb-4 px-4 text-center">
+            What Our <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Customers</span> Say
           </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
+          <p className="text-center text-base sm:text-lg text-slate-400 px-4">
             Real experiences from home chefs and culinary professionals who've transformed their kitchens.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          <div className="glass-card p-6 sm:p-8 rounded-2xl">
-            <div className="flex items-center mb-4 sm:mb-6">
-              <Quote className="w-6 sm:w-8 h-6 sm:h-8 text-purple-400 mr-3" />
-              <div className="flex space-x-1">
-                {[1, 2, 3, 4, 5].map(star => <Star key={star} className="w-3 sm:w-4 h-3 sm:h-4 text-yellow-400 fill-current" />)}
-              </div>
-            </div>
-            <p className="text-slate-200 mb-4 sm:mb-6 italic text-sm sm:text-base">
-              "The knife set completely changed my cooking experience. The precision and balance are unmatched. It's like having professional-grade tools in my home kitchen."
-            </p>
-            <div className="flex items-center">
-              <div className="w-10 sm:w-12 h-10 sm:h-12 glass-card rounded-full flex items-center justify-center mr-3 sm:mr-4">
-                <Users className="w-5 sm:w-6 h-5 sm:h-6 text-blue-400" />
-              </div>
-              <div>
-                <p className="font-semibold text-white text-sm sm:text-base">Sarah Johnson</p>
-                <p className="text-xs sm:text-sm text-slate-300">Home Chef & Food Blogger</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="glass-card p-6 sm:p-8 rounded-2xl">
-            <div className="flex items-center mb-4 sm:mb-6">
-              <Quote className="w-6 sm:w-8 h-6 sm:h-8 text-purple-400 mr-3" />
-              <div className="flex space-x-1">
-                {[1, 2, 3, 4, 5].map(star => <Star key={star} className="w-3 sm:w-4 h-3 sm:h-4 text-yellow-400 fill-current" />)}
-              </div>
-            </div>
-            <p className="text-slate-200 mb-4 sm:mb-6 italic text-sm sm:text-base">
-              "As a restaurant owner, I demand the best. JK Steel delivers consistency and durability that our busy kitchen requires. Outstanding investment."
-            </p>
-            <div className="flex items-center">
-              <div className="w-10 sm:w-12 h-10 sm:h-12 glass-card rounded-full flex items-center justify-center mr-3 sm:mr-4">
-                <ChefHat className="w-5 sm:w-6 h-5 sm:h-6 text-orange-400" />
-              </div>
-              <div>
-                <p className="font-semibold text-white text-sm sm:text-base">Michael Torres</p>
-                <p className="text-xs sm:text-sm text-slate-300">Restaurant Owner</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="glass-card p-6 sm:p-8 rounded-2xl md:col-span-2 lg:col-span-1">
-            <div className="flex items-center mb-4 sm:mb-6">
-              <Quote className="w-6 sm:w-8 h-6 sm:h-8 text-purple-400 mr-3" />
-              <div className="flex space-x-1">
-                {[1, 2, 3, 4, 5].map(star => <Star key={star} className="w-3 sm:w-4 h-3 sm:h-4 text-yellow-400 fill-current" />)}
-              </div>
-            </div>
-            <p className="text-slate-200 mb-4 sm:mb-6 italic text-sm sm:text-base">
-              "Every piece feels luxurious and performs flawlessly. The customer service was exceptional, and the packaging was museum-quality beautiful."
-            </p>
-            <div className="flex items-center">
-              <div className="w-10 sm:w-12 h-10 sm:h-12 glass-card rounded-full flex items-center justify-center mr-3 sm:mr-4">
-                <Heart className="w-5 sm:w-6 h-5 sm:h-6 text-red-400" />
-              </div>
-              <div>
-                <p className="font-semibold text-white text-sm sm:text-base">Emma Williams</p>
-                <p className="text-xs sm:text-sm text-slate-300">Culinary Student</p>
-              </div>
-            </div>
-          </div>
+        <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden">
+          <TestimonialsColumn testimonials={firstColumn} duration={15} />
+          <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
+          <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
         </div>
       </div>
     </section>
 
-    {/* Kitchen Tips & Education */}
-    <section className="py-12 sm:py-16 lg:py-20 glass-card">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold mb-3 sm:mb-4 px-4">
-            Master Your <span className="text-gradient-primary">Culinary Skills</span>
-          </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-slate-200 max-w-2xl mx-auto px-4">
-            Exclusive tips and techniques from our partner chefs to help you get the most out of your premium kitchenware.
-          </p>
-        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-          <div className="space-y-6">
-            <div className="glass-card p-6 rounded-xl">
-              <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 glass-card rounded-full flex items-center justify-center flex-shrink-0">
-                  <Scissors className="w-5 h-5 text-blue-400" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-playfair font-semibold mb-2">Knife Mastery</h3>
-                  <p className="text-slate-200 text-sm mb-3">
-                    Learn the fundamental cuts that every chef should master: brunoise, julienne, and chiffonade techniques that transform your ingredient preparation.
-                  </p>
-                  <Link to="/tips/knife-skills" className="text-purple-400 hover:text-purple-300 text-sm font-medium story-link">
-                    Read Full Guide →
-                  </Link>
-                </div>
-              </div>
-            </div>
 
-            <div className="glass-card p-6 rounded-xl">
-              <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 glass-card rounded-full flex items-center justify-center flex-shrink-0">
-                  <Soup className="w-5 h-5 text-orange-400" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-playfair font-semibold mb-2">Heat Management</h3>
-                  <p className="text-slate-200 text-sm mb-3">
-                    Understanding thermal dynamics with premium cookware - how proper heat distribution creates perfect sears, gentle braising, and consistent results.
-                  </p>
-                  <Link to="/tips/heat-control" className="text-purple-400 hover:text-purple-300 text-sm font-medium story-link">
-                    Explore Techniques →
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            <div className="glass-card p-6 rounded-xl">
-              <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 glass-card rounded-full flex items-center justify-center flex-shrink-0">
-                  <Sparkles className="w-5 h-5 text-purple-400" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-playfair font-semibold mb-2">Maintenance Secrets</h3>
-                  <p className="text-slate-200 text-sm mb-3">
-                    Professional care techniques to maintain your investment. Learn proper cleaning, storage, and maintenance to ensure lifetime performance.
-                  </p>
-                  <Link to="/tips/maintenance" className="text-purple-400 hover:text-purple-300 text-sm font-medium story-link">
-                    Learn More →
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="glass-card p-8 rounded-2xl">
-            <div className="text-center mb-6">
-              <BookOpen className="w-12 h-12 text-purple-400 mx-auto mb-4" />
-              <h3 className="text-2xl font-playfair font-semibold mb-2">Free Culinary Guide</h3>
-              <p className="text-slate-200 text-sm mb-6">
-                Download our comprehensive 50-page guide featuring techniques, recipes, and maintenance tips curated by our partner chefs.
-              </p>
-            </div>
-            <div className="space-y-4">
-              <div className="flex items-center text-sm text-slate-200">
-                <CheckCircle className="w-4 h-4 text-green-400 mr-3" />
-                <span>Professional knife techniques</span>
-              </div>
-              <div className="flex items-center text-sm text-slate-200">
-                <CheckCircle className="w-4 h-4 text-green-400 mr-3" />
-                <span>Heat management mastery</span>
-              </div>
-              <div className="flex items-center text-sm text-slate-200">
-                <CheckCircle className="w-4 h-4 text-green-400 mr-3" />
-                <span>Equipment care & maintenance</span>
-              </div>
-              <div className="flex items-center text-sm text-slate-200">
-                <CheckCircle className="w-4 h-4 text-green-400 mr-3" />
-                <span>Exclusive recipes from partner chefs</span>
-              </div>
-              <Button className="w-full glass-button mt-6">
-                <Mail className="w-4 h-4 mr-2" />
-                Get Free Guide
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     {/* Sustainability & Values */}
-    <section className="py-12 sm:py-16 lg:py-20">
+    < section className="py-12 sm:py-16 lg:py-20" >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
           <div className="glass-card rounded-full px-4 sm:px-6 py-2 mb-4 sm:mb-6 inline-block">
@@ -588,10 +432,10 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section >
 
     {/* Enhanced Service Guarantees */}
-    <section className="py-12 sm:py-16 lg:py-20 glass-card">
+    < section className="py-12 sm:py-16 lg:py-20" >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold mb-3 sm:mb-4 px-4">
@@ -646,102 +490,12 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section >
 
-    {/* Newsletter & Community */}
-    <section className="py-12 sm:py-16 lg:py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-            <div>
-              <div className="glass-card rounded-full px-4 py-2 mb-6 inline-block">
-                <span className="text-sm font-medium text-slate-200">Join Our Community</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold mb-3 sm:mb-4">
-                Stay Connected with <span className="text-gradient-primary">Culinary Excellence</span>
-              </h2>
-              <p className="text-base sm:text-lg lg:text-xl text-slate-200 mb-6 sm:mb-8">
-                Get exclusive access to chef tutorials, new product launches, seasonal recipes, and insider tips from the world of luxury kitchenware.
-              </p>
 
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center text-slate-200">
-                  <CheckCircle className="w-5 h-5 text-green-400 mr-3" />
-                  <span>Weekly chef masterclasses</span>
-                </div>
-                <div className="flex items-center text-slate-200">
-                  <CheckCircle className="w-5 h-5 text-green-400 mr-3" />
-                  <span>Early access to new collections</span>
-                </div>
-                <div className="flex items-center text-slate-200">
-                  <CheckCircle className="w-5 h-5 text-green-400 mr-3" />
-                  <span>Exclusive member discounts</span>
-                </div>
-                <div className="flex items-center text-slate-200">
-                  <CheckCircle className="w-5 h-5 text-green-400 mr-3" />
-                  <span>Seasonal recipe collections</span>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-3">
-                <div className="flex-1">
-                  <input type="email" placeholder="Enter your email address" className="w-full px-4 py-3 glass-card rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-400" />
-                </div>
-                <Button className="glass-button px-6 py-3">
-                  <Mail className="w-4 h-4 mr-2" />
-                  Subscribe
-                </Button>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <div className="glass-card p-6 rounded-xl">
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-12 h-12 glass-card rounded-full flex items-center justify-center">
-                    <Users className="w-6 h-6 text-blue-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-playfair font-semibold">Community Stats</h3>
-                    <p className="text-sm text-slate-300">Growing culinary family</p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4 text-center">
-                  <div>
-                    <p className="text-2xl font-bold text-purple-400">25,000+</p>
-                    <p className="text-xs text-slate-300">Active Members</p>
-                  </div>
-                  <div>
-                    <p className="text-2xl font-bold text-blue-400">1,200+</p>
-                    <p className="text-xs text-slate-300">Shared Recipes</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="glass-card p-6 rounded-xl">
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-12 h-12 glass-card rounded-full flex items-center justify-center">
-                    <Crown className="w-6 h-6 text-yellow-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-playfair font-semibold">VIP Program</h3>
-                    <p className="text-sm text-slate-300">Exclusive benefits await</p>
-                  </div>
-                </div>
-                <p className="text-sm text-slate-200 mb-4">
-                  Unlock premium benefits with our loyalty program featuring priority access, exclusive events, and personalized consultations.
-                </p>
-                <Button variant="outline" size="sm" className="glass-button w-full">
-                  Learn More
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     {/* Final CTA Section */}
-    <section className="py-12 sm:py-16 lg:py-20">
+    < section className="py-12 sm:py-16 lg:py-20" >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="glass-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 text-center">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-playfair font-bold mb-3 sm:mb-4">
@@ -760,7 +514,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </section>
-  </div>;
+    </section >
+  </div >;
 };
 export default Home;
