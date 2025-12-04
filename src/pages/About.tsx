@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const About = () => {
   return <div className="min-h-screen pt-20">
     {/* Hero Section */}
-    <section className="hero-gradient py-20">
+    <section className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto">
           <h1 className="text-5xl font-playfair font-bold mb-6 liquid-text-glow">
@@ -18,6 +18,7 @@ const About = () => {
         </div>
       </div>
     </section>
+
     {/* Mission & Vision */}
     <section className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -76,7 +77,7 @@ const About = () => {
     </section>
 
     {/* Values */}
-    <section className="py-20 glass-card">
+    <section className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-playfair font-bold mb-4">
@@ -158,7 +159,7 @@ const About = () => {
     </section>
 
     {/* Team Section */}
-    <section className="py-20 glass-card">
+    <section className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-playfair font-bold mb-4">
@@ -253,9 +254,9 @@ const About = () => {
     </section>
 
     {/* CTA Section */}
-    <section className="py-20 glass-card">
+    <section className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto">
+        <div className="glass-card p-8 rounded-2xl text-center max-w-2xl mx-auto">
           <h2 className="text-4xl font-playfair font-bold mb-4">
             Join Our Culinary Journey
           </h2>
