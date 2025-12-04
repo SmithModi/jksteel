@@ -96,7 +96,7 @@ const About = () => {
             <h3 className="text-xl font-playfair font-semibold mb-4">Excellence</h3>
             <p className="text-slate-200">
               We never compromise on quality. Every product undergoes rigorous testing to ensure it meets
-              our highest standards of durability, functionality, and design.
+              our highest standards of durability, functionality, and design - maintaining a robust foundation.
             </p>
           </div>
 
