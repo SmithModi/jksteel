@@ -71,7 +71,7 @@ export const products: Product[] = [
     title: "Premium Cutting Board with Marble Background",
     price: "₹129.99",
     originalPrice: "₹159.99",
-    image: "/lovable-uploads/cd7b36e8-54eb-4793-b30e-4577fd291a06.png",
+    image: "/lovable-uploads/_AP_4166.JPG",
     category: "Cutting Tools",
     description: "This premium cutting board combines functionality with stunning aesthetics. The deep purple surface is knife-friendly and naturally antimicrobial, while the elegant marble background makes it perfect for serving. Ideal for both food preparation and presentation.",
     features: [
@@ -88,7 +88,7 @@ export const products: Product[] = [
     id: "5",
     title: "Stainless Steel Paper Towel Holder",
     price: "₹34.99",
-    image: "/lovable-uploads/9461e761-7dac-46a9-b623-bab4f8a2159c.png",
+    image: "/lovable-uploads/Stainless Steel Paper Towel Holder.JPG",
     category: "Kitchen Organization",
     description: "Keep your paper towels organized and easily accessible with this sleek stainless steel holder. The weighted base provides stability while the spring-loaded arm holds rolls securely. The modern design complements any kitchen décor.",
     features: [
@@ -159,7 +159,7 @@ export const products: Product[] = [
     id: "9",
     title: "Glass Spice Container with Grid Organizer",
     price: "₹89.99",
-    image: "/lovable-uploads/1402a35f-cf08-4b25-ac82-d734c52c7088.png",
+    image: "/glass_spice_organizer.jpg",
     category: "Storage Solutions",
     description: "Organize your spices in style with this premium glass container featuring a precision grid organizer. The airtight seal preserves freshness while the clear design lets you see contents at a glance. Perfect for spice enthusiasts and professional chefs.",
     features: [
@@ -213,7 +213,7 @@ export const products: Product[] = [
     title: "Heritage Wood-Handle Masher Trio",
     price: "₹74.99",
     originalPrice: "₹89.99",
-    image: "/lovable-uploads/_AP_3577.JPG",
+    image: "/lovable-uploads/Heritage Wood-Handle Masher Trio.png",
     category: "Kitchen Accessories",
     description: "Warm hardwood handles meet stainless strength in this trio of countertop-friendly mashers. Sized for saucepans, stockpots, and mixing bowls, each tool brings farmhouse charm and reliable heft to potatoes, root vegetables, and lentil mixes.",
     features: [
@@ -231,7 +231,7 @@ export const products: Product[] = [
     title: "Mirror-Finish Manual Coconut Scraper",
     price: "₹119.99",
     originalPrice: "₹149.99",
-    image: "/lovable-uploads/_AP_3597.JPG",
+    image: "/coconut_scraper.jpg",
     category: "Kitchen Gadgets",
     description: "Create fluffy coconut shavings in seconds with this mirror-finish scraper. The serrated blade cluster couples with a smooth hand crank, while the locking vacuum base anchors the tool to marble or tile counters for safe, wobble-free operation.",
     features: [
@@ -248,7 +248,7 @@ export const products: Product[] = [
     id: "14",
     title: "Stainless Medu Vada Dispenser",
     price: "₹64.99",
-    image: "/lovable-uploads/_AP_3591.JPG",
+    image: "/lovable-uploads/Stainless Medu Vada Dispenser.JPG",
     category: "Kitchen Gadgets",
     description: "Shape perfectly round medu vadas, donut fritters, and pakodas with this spring-loaded dispenser. The polished canister resists stains, while the elevated red base keeps the nozzle off your work surface between batches.",
     features: [
@@ -697,7 +697,7 @@ export const products: Product[] = [
     id: "40",
     title: "Cobalt Pantry Keeper Set",
     price: "₹69.99",
-    image: "/lovable-uploads/_AP_4194.JPG",
+    image: "/cobalt_pantry_keeper.jpg",
     category: "Storage Solutions",
     description: "Bright cobalt lids crown this five-piece pantry set, pairing frosted bodies with airtight seals to keep lentils, pasta, and snacks fresh and organized.",
     features: [
@@ -715,7 +715,7 @@ export const products: Product[] = [
     title: "Gourmet Trigger Cookie & Chakli Press",
     price: "₹149.99",
     originalPrice: "₹179.99",
-    image: "/lovable-uploads/_AP_4213.JPG",
+    image: "/gourmet_trigger_press.jpg",
     category: "Kitchen Gadgets",
     description: "From buttery cookies to festive chaklis, this mirror-finish trigger press delivers bakery-perfect shapes with a squeeze of the ergonomic handle.",
     features: [
@@ -766,7 +766,7 @@ export const products: Product[] = [
     id: "44",
     title: "Pro Cookie Disc Expansion Kit",
     price: "₹59.99",
-    image: "/lovable-uploads/_AP_4190.JPG",
+    image: "/lovable-uploads/Pro Cookie Disc Expansion Kit.JPG",
     category: "Kitchen Accessories",
     description: "Swap up your cookie press repertoire with this thirteen-disc expansion kit, laser-cut for sharp details and bundled with a matching trigger barrel.",
     features: [
@@ -783,7 +783,7 @@ export const products: Product[] = [
     id: "45",
     title: "Satin Steel Pastry Board",
     price: "₹79.99",
-    image: "/lovable-uploads/_AP_4174.JPG",
+    image: "/lovable-uploads/Satin Steel Pastry Board.JPG",
     category: "Kitchen Accessories",
     description: "Roll out rotis, fondant, or laminated dough on this satin-finished stainless board featuring rounded edges and a cool-to-the-touch surface.",
     features: [
@@ -817,7 +817,7 @@ export const products: Product[] = [
     id: "47",
     title: "Azure Pantry Keeper Set",
     price: "₹69.99",
-    image: "/lovable-uploads/_AP_4177.JPG",
+    image: "/lovable-uploads/Azure Pantry Keeper Set.JPG",
     category: "Storage Solutions",
     description: "Keep grains, pasta, and snacks fresh with this frosted container quintet featuring signature azure lids and a slim, space-saving silhouette.",
     features: [
@@ -834,7 +834,7 @@ export const products: Product[] = [
     id: "48",
     title: "Coastal Basket Trio",
     price: "₹54.99",
-    image: "/lovable-uploads/_AP_4180.JPG",
+    image: "/coastal_basket_trio.jpg",
     category: "Organization",
     description: "Bright blue baskets bring breezy energy to countertops. Use them for fruit, pantry packets, or entryway odds and ends.",
     features: [
@@ -1055,7 +1055,7 @@ export const products: Product[] = [
     id: "61",
     title: "Charming Bloom Canister Set",
     price: "₹79.99",
-    image: "/lovable-uploads/_AP_4114.JPG",
+    image: "/lovable-uploads/Charming Bloom Canister Set.JPG",
     category: "Storage Solutions",
     description: "Bring artful color to your pantry with this floral canister family, perfect for pulses, cookies, or festive snacks.",
     features: [
